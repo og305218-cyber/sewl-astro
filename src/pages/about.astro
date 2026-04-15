@@ -2,87 +2,223 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import SectionDivider from '../components/SectionDivider.astro';
+import { tokens } from '../config/tokens';
 import { aboutContent, site } from '../data/content';
 ---
 
 <BaseLayout title="SEWL — About" description="The story behind SEWL and Candreia's return to this way of living.">
   <Navbar />
 
-  <main class="page-shell page-shell--alt">
-    <section class="hero hero--inner">
+  <main>
+    <section class="hero" style={`background: ${tokens.gradientHero}; min-height: 100vh; display: flex; align-items: center; padding: clamp(120px, 18vw, 200px) 0 clamp(80px, 12vw, 120px);`}>
       <div class="container">
-        <div class="copy-shell">
+        <div class="hero-copy">
           <p class="section-label section-label--light">{site.operator}</p>
-          <h1>My Story</h1>
-          <p class="lead lead--serif">{`I didn't build ${site.name}. I returned to it.`}</p>
+          <h1 class="hero-title">My Story</h1>
+          <p class="hero-subtext">{`I didn't build ${site.name}. I returned to it.`}</p>
         </div>
       </div>
     </section>
 
     <SectionDivider />
 
-    <section class="section section--light" data-scroll-reveal>
-      <div class="container story-grid">
-        {aboutContent.storySections.map((section) => (
-          <article class="card card--light" data-scroll-reveal>
-            <h2>{section.title}</h2>
-            <div class="stack-lg">
+    {aboutContent.storySections.map((section, index) => (
+      <>
+        <section
+          class:list={['story-section', index % 2 === 0 ? 'story-section--light' : 'story-section--dark']}
+          data-scroll-reveal
+          style={index % 2 === 0 ? `background: ${tokens.gradientLight}; color: ${tokens.colorPrimary};` : undefined}
+        >
+          <div class="container story-shell">
+            <div class="story-copy">
+              <p class:list={['section-label', index % 2 === 0 ? '' : 'section-label--light']}>{section.title}</p>
+              <h2 class:list={['story-title', index % 2 === 0 ? 'story-title--dark' : '']}>{section.title}</h2>
+            </div>
+            <div class="story-body">
               {section.paragraphs.map((paragraph) => (
-                <p class="muted-text-light italic-note">{paragraph}</p>
+                <p class:list={['body-copy', index % 2 === 0 ? 'body-copy--dark' : '', 'story-paragraph']}>{paragraph}</p>
               ))}
             </div>
-          </article>
-        ))}
-      </div>
-    </section>
+          </div>
+        </section>
+        <SectionDivider />
+      </>
+    ))}
 
-    <SectionDivider />
-
-    <section class="section" data-scroll-reveal>
+    <section class="about-section about-section--dark" data-scroll-reveal>
       <div class="container">
-        <div class="copy-shell--narrow stack-lg">
+        <div class="copy-shell">
           <p class="section-label section-label--light">Why SEWL Exists</p>
-          <p class="muted-text">SEWL exists for the woman who feels the same quiet knowing...</p>
-          <p class="muted-text">That there is a better way to live.</p>
-          <p class="muted-text">A more aligned way.</p>
-          <p class="muted-text">A more peaceful way.</p>
-          <p class="muted-text">A way that honors:</p>
-          <p class="muted-text">— her body</p>
-          <p class="muted-text">— her family</p>
-          <p class="muted-text">— her spirit</p>
-          <p class="muted-text">— her purpose</p>
-          <p class="muted-text">This is for the woman who doesn't want to rush anymore.</p>
-          <p class="muted-text">Who doesn't want to force anymore.</p>
-          <p class="muted-text">Who is ready to live with intention.</p>
+          <p class="body-copy">SEWL exists for the woman who feels the same quiet knowing...</p>
+          <p class="body-copy">That there is a better way to live.</p>
+          <p class="body-copy">A more aligned way.</p>
+          <p class="body-copy">A more peaceful way.</p>
+          <p class="body-copy">A way that honors:</p>
+          <p class="body-copy">— her body</p>
+          <p class="body-copy">— her family</p>
+          <p class="body-copy">— her spirit</p>
+          <p class="body-copy">— her purpose</p>
+          <p class="body-copy">This is for the woman who doesn't want to rush anymore.</p>
+          <p class="body-copy">Who doesn't want to force anymore.</p>
+          <p class="body-copy">Who is ready to live with intention.</p>
         </div>
       </div>
     </section>
 
     <SectionDivider />
 
-    <section class="section section--light section--tight" data-scroll-reveal>
+    <section class="about-section about-section--light about-section--tight" data-scroll-reveal style={`background: ${tokens.gradientLight}; color: ${tokens.colorPrimary};`}>
       <div class="container">
-        <div class="copy-shell--narrow stack-xl">
+        <div class="copy-shell">
           <p class="section-label">My Role</p>
           <blockquote>
-            <h2>
+            <h2 class="story-title story-title--dark">
               I am not here to be above you.
               <br />
               I am here to walk with you.
             </h2>
           </blockquote>
-          <div class="stack-lg">
-            <p class="light-text">To share what I've lived.</p>
-            <p class="light-text">To guide gently.</p>
-            <p class="light-text">To remind you of what you already carry.</p>
-            <p class="light-text">If something in you feels called to this...</p>
-            <p class="light-text">You don't need to have everything figured out.</p>
-            <p class="light-text">You don't need to be perfect.</p>
-            <p class="light-text">You simply begin.</p>
+          <div class="role-copy">
+            <p class="body-copy body-copy--dark">To share what I've lived.</p>
+            <p class="body-copy body-copy--dark">To guide gently.</p>
+            <p class="body-copy body-copy--dark">To remind you of what you already carry.</p>
+            <p class="body-copy body-copy--dark">If something in you feels called to this...</p>
+            <p class="body-copy body-copy--dark">You don't need to have everything figured out.</p>
+            <p class="body-copy body-copy--dark">You don't need to be perfect.</p>
+            <p class="body-copy body-copy--dark">You simply begin.</p>
           </div>
-          <a class="button" href={site.liveUrl}>Enter SEWL</a>
+          <a class="primary-button" href={site.liveUrl}>Enter SEWL</a>
         </div>
       </div>
     </section>
   </main>
 </BaseLayout>
+
+<style>
+  .container {
+    width: min(1240px, calc(100vw - 40px));
+    margin: 0 auto;
+  }
+
+  .hero-copy,
+  .copy-shell {
+    max-width: 780px;
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: #c4956a;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 48px;
+    height: 1px;
+    background: rgba(196,149,106,0.72);
+    flex: 0 0 48px;
+  }
+
+  .hero-title {
+    font-size: clamp(4rem, 11vw, 8.6rem);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    color: #faf6f0;
+  }
+
+  .hero-subtext {
+    margin-top: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.08rem, 2.2vw, 1.32rem);
+    line-height: 1.9;
+    color: rgba(250,246,240,0.8);
+    font-style: italic;
+    letter-spacing: 0.04em;
+  }
+
+  .story-section,
+  .about-section {
+    padding: clamp(90px, 12vw, 132px) 0;
+  }
+
+  .about-section--tight {
+    padding-bottom: clamp(60px, 8vw, 96px);
+  }
+
+  .story-section--dark,
+  .about-section--dark {
+    background: #1a0a2e;
+    color: #faf6f0;
+  }
+
+  .story-shell {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.7fr) minmax(0, 1fr);
+    gap: clamp(28px, 6vw, 96px);
+    align-items: start;
+  }
+
+  .story-title {
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 1.02;
+    color: #faf6f0;
+  }
+
+  .story-title--dark {
+    color: #1a0a2e;
+  }
+
+  .story-body,
+  .role-copy,
+  .copy-shell {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .body-copy {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.95;
+    color: rgba(250,246,240,0.82);
+  }
+
+  .body-copy--dark {
+    color: rgba(26,10,46,0.8);
+  }
+
+  .story-paragraph {
+    font-style: italic;
+    letter-spacing: 0.04em;
+  }
+
+  .primary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    min-height: 54px;
+    margin-top: 16px;
+    padding: 14px 32px;
+    border-radius: 4px;
+    border: 1px solid #c4956a;
+    background: #c4956a;
+    color: #1a0a2e;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 900px) {
+    .story-shell {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

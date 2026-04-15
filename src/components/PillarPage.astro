@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from './Navbar.astro';
 import SectionDivider from './SectionDivider.astro';
+import { tokens } from '../config/tokens';
 
 interface Section {
   title: string;
@@ -36,29 +37,32 @@ const {
 <BaseLayout title={`SEWL — ${title}`} description={subtext}>
   <Navbar />
 
-  <main class="page-shell page-shell--default">
-    <section class="hero hero--inner">
-      <div class="container">
-        <div class="copy-shell">
+  <main>
+    <section
+      class="pillar-hero hero"
+      style={`background: ${tokens.gradientHero}; min-height: 80vh; display: flex; align-items: center; padding: clamp(140px, 18vw, 200px) 0 clamp(80px, 10vw, 120px);`}
+    >
+      <div class="container shell">
+        <div class="hero-copy">
           <p class="section-label section-label--light">SEWL Pillar</p>
-          <h1>{title}</h1>
-          <p class="lead lead--serif">{subtext}</p>
+          <h1 class="pillar-title">{title}</h1>
+          <p class="pillar-subtext">{subtext}</p>
         </div>
       </div>
     </section>
 
     <SectionDivider />
 
-    <section class="section" data-scroll-reveal>
-      <div class="container pillar-grid">
-        <div class="ornament-panel" aria-hidden="true">
-          <div class="ornament-panel__frame"></div>
-          <div class="ornament-panel__glow"></div>
+    <section class="pillar-section pillar-section--dark" data-scroll-reveal>
+      <div class="container shell pillar-intro">
+        <div class="ornament" aria-hidden="true">
+          <div class="ornament__halo"></div>
+          <div class="ornament__frame"></div>
         </div>
-        <div class="stack-xl">
-          <div class="pill" data-scroll-reveal>{`Candreia for SEWL`}</div>
+        <div class="intro-copy">
+          <div class="intro-pill" data-scroll-reveal>{`Candreia for SEWL`}</div>
           {opening.map((paragraph) => (
-            <p>{paragraph}</p>
+            <p class="body-copy">{paragraph}</p>
           ))}
         </div>
       </div>
@@ -66,19 +70,27 @@ const {
 
     <SectionDivider />
 
-    <section class="section section--light" data-scroll-reveal>
-      <div class="container stack-xl">
+    <section
+      class="pillar-section pillar-section--light"
+      data-scroll-reveal
+      style={`background: ${tokens.gradientLight}; color: ${tokens.colorPrimary};`}
+    >
+      <div class="container shell section-stack">
         <p class="section-label">{sectionIntroLabel}</p>
-        <div class="copy-shell">
+        <div class="section-copy">
           {sectionIntro.map((paragraph) => (
-            <p class="light-text">{paragraph}</p>
+            <p class="body-copy body-copy--dark">{paragraph}</p>
           ))}
         </div>
-        <div class="card-grid card-grid--three">
-          {sections.map((section) => (
-            <article class="card card--light" data-scroll-reveal>
-              <h2>{section.title}</h2>
-              <p class="light-text">{section.body}</p>
+        <div class="pillar-card-grid">
+          {sections.map((section, index) => (
+            <article
+              class="pillar-card"
+              data-scroll-reveal
+              style={index % 2 === 1 ? `background: rgba(196,149,106,0.06);` : undefined}
+            >
+              <h2 class="card-title card-title--dark">{section.title}</h2>
+              <p class="body-copy body-copy--dark">{section.body}</p>
             </article>
           ))}
         </div>
@@ -87,16 +99,204 @@ const {
 
     <SectionDivider />
 
-    <section class="section section--tight" data-scroll-reveal>
-      <div class="container stack-xl">
+    <section class="pillar-section pillar-section--dark pillar-section--tight" data-scroll-reveal>
+      <div class="container shell section-stack">
         <p class="section-label section-label--light">{closingLabel}</p>
-        <div class="copy-shell">
+        <div class="section-copy">
           {closing.map((paragraph) => (
-            <p>{paragraph}</p>
+            <p class="body-copy">{paragraph}</p>
           ))}
         </div>
-        <a class="button" href="https://www.sewl.life/the-path">{ctaLabel}</a>
+        <a class="cta-button" href="/the-path">{ctaLabel}</a>
       </div>
     </section>
   </main>
 </BaseLayout>
+
+<style>
+  .container {
+    width: min(1240px, calc(100vw - 40px));
+    margin: 0 auto;
+  }
+
+  .shell {
+    width: 100%;
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: #c4956a;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 48px;
+    height: 1px;
+    background: rgba(196, 149, 106, 0.72);
+    flex: 0 0 48px;
+  }
+
+  .section-label--light {
+    color: #c4956a;
+  }
+
+  .pillar-title {
+    font-size: clamp(4rem, 11vw, 9rem);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    max-width: 980px;
+    color: #faf6f0;
+  }
+
+  .pillar-subtext {
+    margin-top: 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-style: italic;
+    letter-spacing: 0.06em;
+    color: #c4956a;
+  }
+
+  .pillar-section {
+    padding: clamp(90px, 12vw, 132px) 0;
+  }
+
+  .pillar-section--tight {
+    padding-bottom: clamp(60px, 8vw, 96px);
+  }
+
+  .pillar-section--dark {
+    background: #1a0a2e;
+    color: #faf6f0;
+  }
+
+  .pillar-intro {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.9fr) minmax(320px, 1.1fr);
+    gap: clamp(28px, 5vw, 72px);
+    align-items: center;
+  }
+
+  .ornament {
+    position: relative;
+    min-height: 480px;
+    border-radius: 24px;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 52% 32%, rgba(196, 149, 106, 0.24), transparent 18%),
+      linear-gradient(180deg, rgba(250, 246, 240, 0.04) 0%, rgba(196, 149, 106, 0.12) 36%, rgba(26, 10, 46, 0.94) 100%);
+    border: 1px solid rgba(196, 149, 106, 0.2);
+  }
+
+  .ornament__halo {
+    position: absolute;
+    inset: 18% 22% 18% 22%;
+    border-radius: 999px 999px 0 0;
+    background: rgba(250, 246, 240, 0.12);
+    filter: blur(42px);
+  }
+
+  .ornament__frame {
+    position: absolute;
+    inset: 11%;
+    border: 1px solid rgba(250, 246, 240, 0.22);
+    border-radius: 18px;
+  }
+
+  .intro-copy,
+  .section-stack,
+  .section-copy {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .intro-copy {
+    gap: 18px;
+  }
+
+  .section-stack {
+    gap: 26px;
+  }
+
+  .section-copy {
+    gap: 14px;
+    max-width: 760px;
+  }
+
+  .intro-pill {
+    width: fit-content;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(196, 149, 106, 0.24);
+    background: rgba(250, 246, 240, 0.06);
+    color: #c4956a;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.64rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+  }
+
+  .body-copy {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(1rem, 2vw, 1.08rem);
+    line-height: 1.95;
+    color: rgba(250, 246, 240, 0.78);
+  }
+
+  .body-copy--dark {
+    color: rgba(26, 10, 46, 0.8);
+  }
+
+  .pillar-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .pillar-card {
+    padding: clamp(28px, 4vw, 40px);
+    border: 1px solid rgba(196, 149, 106, 0.2);
+    border-radius: 16px;
+    background: rgba(250, 246, 240, 0.03);
+  }
+
+  .card-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 16px;
+  }
+
+  .card-title--dark {
+    color: #1a0a2e;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    min-height: 56px;
+    padding: 14px 32px;
+    border-radius: 4px;
+    background: #c4956a;
+    border: 1px solid #c4956a;
+    color: #1a0a2e;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 960px) {
+    .pillar-intro,
+    .pillar-card-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
