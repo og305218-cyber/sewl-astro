@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import SectionDivider from '../components/SectionDivider.astro';
+import { aboutContent, site } from '../data/content';
+---
+
+<BaseLayout title="SEWL — About" description="The story behind SEWL and Candreia's return to this way of living.">
+  <Navbar />
+
+  <main class="page-shell page-shell--alt">
+    <section class="hero hero--inner">
+      <div class="container">
+        <div class="copy-shell">
+          <p class="section-label section-label--light">{site.operator}</p>
+          <h1>My Story</h1>
+          <p class="lead lead--serif">{`I didn't build ${site.name}. I returned to it.`}</p>
+        </div>
+      </div>
+    </section>
+
+    <SectionDivider />
+
+    <section class="section section--light" data-scroll-reveal>
+      <div class="container story-grid">
+        {aboutContent.storySections.map((section) => (
+          <article class="card card--light" data-scroll-reveal>
+            <h2>{section.title}</h2>
+            <div class="stack-lg">
+              {section.paragraphs.map((paragraph) => (
+                <p class="muted-text-light italic-note">{paragraph}</p>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <SectionDivider />
+
+    <section class="section" data-scroll-reveal>
+      <div class="container">
+        <div class="copy-shell--narrow stack-lg">
+          <p class="section-label section-label--light">Why SEWL Exists</p>
+          <p class="muted-text">SEWL exists for the woman who feels the same quiet knowing...</p>
+          <p class="muted-text">That there is a better way to live.</p>
+          <p class="muted-text">A more aligned way.</p>
+          <p class="muted-text">A more peaceful way.</p>
+          <p class="muted-text">A way that honors:</p>
+          <p class="muted-text">— her body</p>
+          <p class="muted-text">— her family</p>
+          <p class="muted-text">— her spirit</p>
+          <p class="muted-text">— her purpose</p>
+          <p class="muted-text">This is for the woman who doesn't want to rush anymore.</p>
+          <p class="muted-text">Who doesn't want to force anymore.</p>
+          <p class="muted-text">Who is ready to live with intention.</p>
+        </div>
+      </div>
+    </section>
+
+    <SectionDivider />
+
+    <section class="section section--light section--tight" data-scroll-reveal>
+      <div class="container">
+        <div class="copy-shell--narrow stack-xl">
+          <p class="section-label">My Role</p>
+          <blockquote>
+            <h2>
+              I am not here to be above you.
+              <br />
+              I am here to walk with you.
+            </h2>
+          </blockquote>
+          <div class="stack-lg">
+            <p class="light-text">To share what I've lived.</p>
+            <p class="light-text">To guide gently.</p>
+            <p class="light-text">To remind you of what you already carry.</p>
+            <p class="light-text">If something in you feels called to this...</p>
+            <p class="light-text">You don't need to have everything figured out.</p>
+            <p class="light-text">You don't need to be perfect.</p>
+            <p class="light-text">You simply begin.</p>
+          </div>
+          <a class="button" href={site.liveUrl}>Enter SEWL</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

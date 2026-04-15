@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from './Navbar.astro';
+import SectionDivider from './SectionDivider.astro';
+
+interface Section {
+  title: string;
+  body: string;
+}
+
+interface Props {
+  title: string;
+  subtext: string;
+  opening: string[];
+  sectionIntroLabel: string;
+  sectionIntro: string[];
+  sections: Section[];
+  closingLabel: string;
+  closing: string[];
+  ctaLabel: string;
+}
+
+const {
+  title,
+  subtext,
+  opening,
+  sectionIntroLabel,
+  sectionIntro,
+  sections,
+  closingLabel,
+  closing,
+  ctaLabel,
+} = Astro.props;
+---
+
+<BaseLayout title={`SEWL — ${title}`} description={subtext}>
+  <Navbar />
+
+  <main class="page-shell page-shell--default">
+    <section class="hero hero--inner">
+      <div class="container">
+        <div class="copy-shell">
+          <p class="section-label section-label--light">SEWL Pillar</p>
+          <h1>{title}</h1>
+          <p class="lead lead--serif">{subtext}</p>
+        </div>
+      </div>
+    </section>
+
+    <SectionDivider />
+
+    <section class="section" data-scroll-reveal>
+      <div class="container pillar-grid">
+        <div class="ornament-panel" aria-hidden="true">
+          <div class="ornament-panel__frame"></div>
+          <div class="ornament-panel__glow"></div>
+        </div>
+        <div class="stack-xl">
+          <div class="pill" data-scroll-reveal>{`Candreia for SEWL`}</div>
+          {opening.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <SectionDivider />
+
+    <section class="section section--light" data-scroll-reveal>
+      <div class="container stack-xl">
+        <p class="section-label">{sectionIntroLabel}</p>
+        <div class="copy-shell">
+          {sectionIntro.map((paragraph) => (
+            <p class="light-text">{paragraph}</p>
+          ))}
+        </div>
+        <div class="card-grid card-grid--three">
+          {sections.map((section) => (
+            <article class="card card--light" data-scroll-reveal>
+              <h2>{section.title}</h2>
+              <p class="light-text">{section.body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <SectionDivider />
+
+    <section class="section section--tight" data-scroll-reveal>
+      <div class="container stack-xl">
+        <p class="section-label section-label--light">{closingLabel}</p>
+        <div class="copy-shell">
+          {closing.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+        </div>
+        <a class="button" href="https://www.sewl.life/the-path">{ctaLabel}</a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

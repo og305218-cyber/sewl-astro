@@ -1,0 +1,242 @@
+---
+const navItems = [
+  { label: 'Kitchen', href: '/kitchen' },
+  { label: 'Temple', href: '/temple' },
+  { label: 'Voice', href: '/voice' },
+  { label: 'The Path', href: '/the-path' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
+];
+---
+
+<nav id="sewl-nav">
+  <a href="/" class="nav-mark" aria-label="Return home">
+    <span class="nav-mark-circle">S</span>
+    <span class="nav-mark-text">
+      <span class="nav-mark-nation">SEWL</span>
+      <span class="nav-mark-name">Candreia</span>
+    </span>
+  </a>
+
+  <button id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" type="button">
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+  </button>
+</nav>
+
+<div id="nav-overlay" aria-hidden="true">
+  <div class="nav-overlay-inner">
+    <div class="nav-links">
+      {navItems.map((item) => (
+        <a href={item.href} class="nav-link">{item.label}</a>
+      ))}
+    </div>
+    <div class="nav-cta">
+      <p class="nav-cta-label">Step inward</p>
+      <a href="https://www.sewl.life/the-path" class="nav-cta-button">
+        Begin Your Rhythm
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  #sewl-nav {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    z-index: 120;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    pointer-events: none;
+  }
+
+  .nav-mark {
+    pointer-events: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: #faf6f0;
+  }
+
+  .nav-mark-circle {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid rgba(196, 149, 106, 0.5);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: #c4956a;
+    background: rgba(26, 10, 46, 0.4);
+    backdrop-filter: blur(14px);
+  }
+
+  .nav-mark-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .nav-mark-nation {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #c4956a;
+  }
+
+  .nav-mark-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    opacity: 0.82;
+  }
+
+  #nav-toggle {
+    pointer-events: auto;
+    width: 58px;
+    height: 58px;
+    border: 1px solid rgba(250, 246, 240, 0.14);
+    background: rgba(26, 10, 46, 0.6);
+    backdrop-filter: blur(18px);
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  .hamburger-line {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: #faf6f0;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+    transform-origin: center;
+  }
+
+  #nav-toggle.is-open .hamburger-line:first-child {
+    transform: translateY(4.25px) rotate(45deg);
+  }
+
+  #nav-toggle.is-open .hamburger-line:last-child {
+    transform: translateY(-4.25px) rotate(-45deg);
+  }
+
+  #nav-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 110;
+    background:
+      radial-gradient(circle at 18% 14%, rgba(196, 149, 106, 0.12), transparent 24%),
+      #1a0a2e;
+    display: flex;
+    align-items: center;
+    padding: 80px clamp(32px, 8vw, 80px) clamp(32px, 8vw, 80px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.45s ease;
+  }
+
+  #nav-overlay.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-overlay-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .nav-link {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5.5vw, 4.5rem);
+    line-height: 1.1;
+    color: #c4956a;
+    display: block;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: #faf6f0;
+    transform: translateX(8px);
+  }
+
+  .nav-cta-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(196, 149, 106, 0.6);
+    margin-bottom: 14px;
+  }
+
+  .nav-cta-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 32px;
+    background: #c4956a;
+    color: #1a0a2e;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    transition: opacity 0.3s ease;
+  }
+
+  @media (max-width: 640px) {
+    .nav-mark-text {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  function setupNav() {
+    const toggle = document.getElementById('nav-toggle');
+    const overlay = document.getElementById('nav-overlay');
+
+    if (!toggle || !overlay || toggle.dataset.bound === 'true') {
+      return;
+    }
+
+    const closeMenu = () => {
+      toggle.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      overlay.setAttribute('aria-hidden', 'true');
+    };
+
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.classList.contains('is-open');
+      toggle.classList.toggle('is-open');
+      overlay.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      overlay.setAttribute('aria-hidden', String(isOpen));
+    });
+
+    overlay.querySelectorAll('.nav-link').forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    toggle.dataset.bound = 'true';
+  }
+
+  setupNav();
+  document.addEventListener('astro:page-load', setupNav);
+</script>

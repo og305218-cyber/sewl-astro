@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+---
+
+<BaseLayout title="SEWL — Contact" description="Reach out gently and be received with care.">
+  <Navbar />
+
+  <main class="page-shell page-shell--default">
+    <section class="hero hero--inner">
+      <div class="container">
+        <div class="copy-shell--narrow">
+          <p class="section-label section-label--light">Contact</p>
+          <h1>Reach Out Gently</h1>
+          <p class="lead lead--serif">You will be received with care.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--light section--tight" data-scroll-reveal>
+      <div class="container contact-grid">
+        <div>
+          <p class="section-label">Write</p>
+          <form class="form-card">
+            <label class="field-label">
+              <span>Name</span>
+              <input class="field" type="text" name="name" />
+            </label>
+            <label class="field-label">
+              <span>Email</span>
+              <input class="field" type="email" name="email" />
+            </label>
+            <label class="field-label">
+              <span>Message</span>
+              <textarea class="field" name="message" rows="8"></textarea>
+            </label>
+            <button class="button" type="submit">Send with Love</button>
+          </form>
+        </div>
+
+        <div class="stack-lg">
+          <article class="card card--light" data-scroll-reveal>
+            <h2>Prefer to speak?</h2>
+            <p class="light-text">You are welcome to share your heart in your own voice.</p>
+
+            <label class="field-label" style="margin-top: 18px;">
+              <span>Upload a voice note</span>
+              <input class="field" type="file" accept=".mp3,.m4a,.wav" />
+            </label>
+
+            <p class="muted-text-light italic-note" style="margin-top: 14px;">
+              Your message will be listened to with full presence.
+            </p>
+          </article>
+
+          <p class="muted-text-light italic-note" data-scroll-reveal>
+            However you reach out... you will be met with gentleness.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

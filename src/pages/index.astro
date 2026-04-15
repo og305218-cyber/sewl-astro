@@ -1,0 +1,203 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import SectionDivider from '../components/SectionDivider.astro';
+import { homeContent, site } from '../data/content';
+---
+
+<BaseLayout>
+  <Navbar />
+
+  <main class="page-shell">
+    <section class="hero">
+      <div class="container">
+        <div class="hero__content">
+          <p class="section-label section-label--light">{site.operator}</p>
+          <h1 data-hero-parallax>Return to the way you were meant to live.</h1>
+
+          <div class="hero-lines">
+            {homeContent.heroSubtextLines.map((line) => (
+              <span>{line}</span>
+            ))}
+          </div>
+
+          <p class="lead">
+            {`${site.name} is a sacred space for women choosing alignment, discipline, and divine living — one gentle step at a time.`}
+          </p>
+
+          <div class="button-row">
+            <a class="button" href={site.liveUrl}>{`Enter ${site.name}`}</a>
+            <a class="button button--ghost" href="/the-path">Begin Your Rhythm</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-indicator">Scroll</div>
+    </section>
+
+    <SectionDivider />
+
+    <section class="section section--light" data-scroll-reveal>
+      <div class="container stack-xl">
+        <div class="copy-shell">
+          <p class="section-label">{`What is ${site.name}`}</p>
+          <h2>
+            This is not a trend.
+            <br />
+            This is not a phase.
+            <br />
+            <br />
+            This is a return.
+          </h2>
+        </div>
+
+        <div class="copy-shell stack-lg">
+          <p class="light-text">
+            A return to how we nourish our bodies...
+            <br />
+            how we care for our homes...
+            <br />
+            how we speak to ourselves...
+            <br />
+            and how we live under divine order.
+          </p>
+          <p class="light-text italic-note">{`${site.name} — ${site.fullName} — is a way of living rooted in truth.`}</p>
+          <p class="light-text">Here, we believe:</p>
+        </div>
+
+        <div class="belief-grid">
+          {homeContent.beliefs.map((belief) => (
+            <div class="card card--soft" data-scroll-reveal>
+              <p class="light-text">{belief}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="copy-shell stack-lg">
+          <p class="light-text">This is not about doing more.</p>
+          <p class="light-text">This is about living differently.</p>
+        </div>
+      </div>
+    </section>
+
+    <SectionDivider />
+
+    <section class="section" data-scroll-reveal>
+      <div class="container stack-xl">
+        <div class="copy-shell">
+          <p class="section-label section-label--light">The 3 Pillars</p>
+          <h2>Three living rooms for the woman returning to herself.</h2>
+        </div>
+
+        <div class="card-grid card-grid--wide">
+          {homeContent.pillarCards.map((pillar) => (
+            <article class="card card--plum" data-scroll-reveal>
+              <div class="card__eyebrow">{pillar.eyebrow}</div>
+              <h3>{pillar.title}</h3>
+              <p class="muted-text">{pillar.description}</p>
+              <div class="button-row">
+                <a class="button button--ghost" href={pillar.href}>Explore</a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <SectionDivider />
+
+    <section class="section section--light" data-scroll-reveal>
+      <div class="container stack-xl">
+        <div class="copy-shell--narrow">
+          <p class="section-label">What Begins to Shift</p>
+          <h2>When you move through SEWL, something soft begins to change.</h2>
+        </div>
+
+        <div class="copy-shell--narrow stack-lg">
+          <p class="light-text">
+            You feel more grounded in your body.
+            <br />
+            More clear in your mind.
+            <br />
+            More present in your home.
+          </p>
+          <p class="light-text">
+            You begin to trust your rhythm again.
+            <br />
+            You begin to care for yourself differently.
+          </p>
+          <p class="light-text">
+            Not perfectly...
+            <br />
+            but intentionally.
+          </p>
+        </div>
+
+        <div class="shift-grid">
+          {homeContent.shifts.map((shift) => (
+            <article class="shift-card" data-scroll-reveal>
+              <div class="shift-card__before">{shift.before}</div>
+              <div class="shift-card__after">{shift.after}</div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <SectionDivider />
+
+    <section class="section" data-scroll-reveal>
+      <div class="container">
+        <div class="copy-shell--narrow stack-xl">
+          <div>
+            <p class="section-label section-label--light">Membership Invitation</p>
+            <h2>
+              {`${site.name} is not something you rush through.`}
+              <br />
+              It is something you return to... daily.
+            </h2>
+          </div>
+
+          <p class="muted-text">You can begin gently:</p>
+          <div class="stack-lg">
+            <p class="muted-text">{`Enter ${site.name} — explore and receive`}</p>
+            <p class="muted-text">Begin Your Rhythm — build your foundation</p>
+            <p class="muted-text">{`Enter the ${site.circleLabel} — go deeper`}</p>
+          </div>
+
+          <div class="stack-lg">
+            <p class="muted-text">No pressure.</p>
+            <p class="muted-text">No urgency.</p>
+            <p class="muted-text">Just a place to come back to yourself.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <SectionDivider />
+
+    <section class="section section--light section--tight" data-scroll-reveal>
+      <div class="container">
+        <div class="copy-shell stack-xl">
+          <p class="section-label">Closing</p>
+          <blockquote>
+            <h2>
+              You are not becoming someone new.
+              <br />
+              You are returning to who you have always been.
+            </h2>
+          </blockquote>
+          <p class="light-text italic-note">
+            When you are ready...
+            <br />
+            SEWL will be here.
+          </p>
+          <div class="button-row">
+            <a class="button" href={site.liveUrl}>Enter SEWL</a>
+            <a class="button button--ghost-dark" href="/the-path">Begin Your Rhythm</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
