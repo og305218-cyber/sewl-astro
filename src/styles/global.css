@@ -1,0 +1,581 @@
+/* ─── Layout ─────────────────────────────────────────────── */
+.container {
+  width: min(1240px, calc(100vw - 40px));
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+}
+
+.two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .two-column { grid-template-columns: 1fr; }
+}
+
+/* ─── Section labels ──────────────────────────────────────── */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: #C4956A;
+  padding-left: 0.34em;
+  margin-bottom: 22px;
+}
+
+.section-label::before {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 0.5px;
+  background: rgba(196,149,106,0.4);
+  flex-shrink: 0;
+}
+
+.section-label--dark {
+  color: rgba(196,149,106,0.8);
+}
+
+/* ─── Hero ────────────────────────────────────────────────── */
+.hero-content {
+  max-width: 860px;
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.9rem, 10vw, 8.2rem);
+  line-height: 1.0;
+  letter-spacing: 0.02em;
+  color: #FAF6F0;
+  margin-bottom: 28px;
+}
+
+.hero-word-shell {
+  display: inline-block;
+  overflow: hidden;
+  margin-right: 0.22em;
+  vertical-align: bottom;
+}
+
+.hero-word {
+  display: inline-block;
+}
+
+.hero-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.hero-lines span {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  font-style: italic;
+  color: rgba(250,246,240,0.72);
+  letter-spacing: 0.06em;
+  line-height: 2.0;
+}
+
+.hero-descriptor {
+  max-width: 580px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  line-height: 1.95;
+  color: rgba(250,246,240,0.7);
+  margin-bottom: 36px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* ─── Buttons ─────────────────────────────────────────────── */
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  background: #C4956A;
+  color: #1A0A2E;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  border: 1px solid #C4956A;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  text-decoration: none;
+}
+
+.primary-button:hover { opacity: 0.88; }
+
+.ghost-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  background: transparent;
+  color: #FAF6F0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  border: 1px solid rgba(196,149,106,0.5);
+  cursor: pointer;
+  transition: border-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+}
+
+.ghost-button:hover {
+  border-color: #C4956A;
+  color: #C4956A;
+  opacity: 1;
+}
+
+/* ─── Scroll indicator ────────────────────────────────────── */
+.scroll-indicator {
+  position: absolute;
+  right: clamp(20px, 4vw, 40px);
+  bottom: 40px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(196,149,106,0.6);
+  writing-mode: vertical-rl;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.scroll-indicator::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 40px;
+  background: rgba(196,149,106,0.4);
+}
+
+/* ─── Section headings ────────────────────────────────────── */
+.section-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.8rem, 7vw, 5.4rem);
+  line-height: 0.94;
+  margin-bottom: 28px;
+  color: #FAF6F0;
+}
+
+.section-heading--dark { color: #1A0A2E; }
+
+.section-heading--xl {
+  font-size: clamp(3.2rem, 8vw, 6.4rem);
+}
+
+/* ─── Body copy ───────────────────────────────────────────── */
+.body-copy {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  line-height: 1.95;
+  color: rgba(250,246,240,0.76);
+  margin-bottom: 16px;
+}
+
+.body-copy--dark { color: rgba(26,10,46,0.76); }
+
+.italic-note {
+  font-style: italic;
+  letter-spacing: 0.03em;
+  color: rgba(26,10,46,0.6);
+}
+
+.poetic-copy { max-width: 580px; }
+
+/* ─── Light sections ──────────────────────────────────────── */
+.light-section {
+  padding: clamp(90px, 14vw, 140px) 0;
+}
+
+.dark-section {
+  padding: clamp(90px, 12vw, 132px) 0;
+  background: #1A0A2E;
+}
+
+/* ─── Belief list ─────────────────────────────────────────── */
+.belief-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 40px;
+}
+
+.belief-item {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  line-height: 1.2;
+  color: #1A0A2E;
+}
+
+.belief-item::before {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  background: #C4956A;
+  transform: rotate(45deg);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+/* ─── Pillar cards ────────────────────────────────────────── */
+.pillars-scroll {
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.pillars-scroll::-webkit-scrollbar { display: none; }
+
+.pillar-card {
+  flex: 0 0 min(78vw, 400px);
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 34px;
+  background: linear-gradient(160deg, rgba(26,10,46,0.97) 0%, rgba(36,16,58,0.95) 100%);
+  border: 1px solid rgba(196,149,106,0.2);
+  border-radius: 20px;
+  transition: transform 0.4s ease, border-color 0.4s ease;
+  text-decoration: none;
+  color: #FAF6F0;
+}
+
+.pillar-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(196,149,106,0.6);
+  opacity: 1;
+}
+
+.pillar-card-number {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #C4956A;
+  margin-bottom: 22px;
+  padding-left: 0.3em;
+}
+
+.pillar-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.8rem, 7vw, 4.2rem);
+  line-height: 0.92;
+  margin-bottom: 18px;
+}
+
+.pillar-card-body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  line-height: 1.9;
+  color: rgba(250,246,240,0.76);
+  max-width: 300px;
+  margin-bottom: 24px;
+}
+
+.pillar-card-cta {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #C4956A;
+  padding-bottom: 7px;
+  border-bottom: 1px solid rgba(196,149,106,0.3);
+  width: fit-content;
+}
+
+/* ─── Shift section ───────────────────────────────────────── */
+.shift-pairs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 40px 0;
+}
+
+.shift-pair {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 4.5vw, 3.4rem);
+  line-height: 1.1;
+  color: #1A0A2E;
+}
+
+.shift-arrow {
+  color: #C4956A;
+  font-size: 0.7em;
+}
+
+/* ─── Membership cards ────────────────────────────────────── */
+.membership-options {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 520px;
+  margin-top: 40px;
+}
+
+.membership-option {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(250,246,240,0.82);
+}
+
+.membership-option::before {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 5px;
+  background: #C4956A;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Path page cards */
+.path-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 680px;
+  margin: 40px auto 0;
+}
+
+.path-card {
+  border: 1px solid rgba(196,149,106,0.22);
+  border-radius: 20px;
+  padding: clamp(32px, 5vw, 56px);
+  background: rgba(250,246,240,0.03);
+}
+
+.path-card--featured {
+  border-color: rgba(196,149,106,0.5);
+  background: rgba(196,149,106,0.06);
+}
+
+.path-card-tier {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #C4956A;
+  margin-bottom: 12px;
+}
+
+.path-card-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  line-height: 1.1;
+  color: #FAF6F0;
+  font-style: italic;
+  margin-bottom: 16px;
+}
+
+.path-card-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  color: #C4956A;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.path-card-price-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  color: rgba(250,246,240,0.5);
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+}
+
+.path-card-includes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.path-card-includes li {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(250,246,240,0.78);
+  line-height: 1.6;
+}
+
+.path-card-includes li::before {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 4px;
+  background: #C4956A;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+/* ─── Content cards (pillar pages) ───────────────────────── */
+.content-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+  margin-top: 40px;
+}
+
+.content-card {
+  border: 1px solid rgba(196,149,106,0.2);
+  border-radius: 16px;
+  padding: clamp(28px, 4vw, 40px);
+  background: rgba(250,246,240,0.03);
+}
+
+.content-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  color: #C4956A;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.content-card-body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.9;
+  color: rgba(250,246,240,0.72);
+}
+
+/* ─── Form styles ─────────────────────────────────────────── */
+.sewl-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 580px;
+}
+
+.sewl-form input,
+.sewl-form textarea {
+  background: rgba(250,246,240,0.06);
+  border: 1px solid rgba(196,149,106,0.2);
+  border-radius: 8px;
+  color: #FAF6F0;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  padding: 14px 18px;
+  width: 100%;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.sewl-form input:focus,
+.sewl-form textarea:focus {
+  border-color: rgba(196,149,106,0.6);
+}
+
+.sewl-form textarea {
+  min-height: 160px;
+  resize: vertical;
+}
+
+.sewl-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: rgba(250,246,240,0.6);
+  text-transform: uppercase;
+}
+
+/* ─── Closing quote ───────────────────────────────────────── */
+.closing-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  line-height: 1.15;
+  font-style: italic;
+  color: rgba(250,246,240,0.88);
+  max-width: 780px;
+  margin-bottom: 40px;
+}
+
+.closing-quote--dark {
+  color: rgba(26,10,46,0.82);
+}
+
+/* ─── Page hero (inner pages) ─────────────────────────────── */
+.page-hero {
+  min-height: 72vh;
+  display: flex;
+  align-items: center;
+  padding: clamp(140px, 18vw, 200px) 0 clamp(80px, 10vw, 120px);
+  background:
+    radial-gradient(circle at 20% 18%, rgba(196,149,106,0.18), transparent 22%),
+    radial-gradient(circle at 80% 12%, rgba(250,246,240,0.10), transparent 20%),
+    linear-gradient(180deg, #12071F 0%, #1A0A2E 54%, #12071E 100%);
+}
+
+.page-hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4rem, 11vw, 9rem);
+  line-height: 1.0;
+  color: #FAF6F0;
+  margin-bottom: 16px;
+}
+
+.page-hero-subtext {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  font-style: italic;
+  color: #C4956A;
+  letter-spacing: 0.06em;
+}
+
+/* ─── About narrative sections ────────────────────────────── */
+.narrative-section {
+  padding: clamp(80px, 12vw, 120px) 0;
+}
+
+.narrative-section:nth-child(even) {
+  background: radial-gradient(ellipse at 30% 50%, rgba(196,149,106,0.06) 0%, transparent 60%), #FAF6F0;
+  color: #1A0A2E;
+}
+
+.narrative-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.05;
+  margin-bottom: 28px;
+}
